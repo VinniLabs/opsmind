@@ -1,0 +1,11 @@
+.env
+*.env
+application-local.yml
+application-dev.yml
+node_modules/
+dist/
+build/
+.gradle/
+.idea/
+.vscode/
+*.log

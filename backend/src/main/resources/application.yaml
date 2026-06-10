@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27018/opsmind}
+  application:
+    name: backend
+opsmind:
+  ai:
+    response-language: ${AI_RESPONSE_LANGUAGE:pt-BR}
+    gemini:
+      api-key: ${GEMINI_API_KEY}
+      model: ${GEMINI_MODEL:gemini-2.5-flash}
+      url: ${GEMINI_API_URL:https://generativelanguage.googleapis.com/v1beta/models}
