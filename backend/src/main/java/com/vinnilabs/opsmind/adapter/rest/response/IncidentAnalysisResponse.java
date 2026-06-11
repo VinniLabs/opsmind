@@ -12,5 +12,6 @@ public class IncidentAnalysisResponse {
     String rootCause;
     String impact;
     String recommendation;
+    String provider;
 }
 

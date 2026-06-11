@@ -1,6 +1,6 @@
 package com.vinnilabs.opsmind.application.service;
 
-import com.vinnilabs.opsmind.application.ai.AiIncidentAnalyzer;
+import com.vinnilabs.opsmind.application.ai.AiProviderRouter;
 import com.vinnilabs.opsmind.application.domain.IncidentAnalysis;
 import com.vinnilabs.opsmind.application.domain.SolutionKnowledgeBase;
 import com.vinnilabs.opsmind.application.repository.IncidentAnalysisRepository;
@@ -19,7 +19,7 @@ public class IncidentAnalysisService implements AnalyzeIncidentUseCase {
 
     private static final Logger log = LoggerFactory.getLogger(IncidentAnalysisService.class);
 
-    private final AiIncidentAnalyzer aiIncidentAnalyzer;
+    private final AiProviderRouter aiProviderRouter;
     private final IncidentAnalysisRepository incidentAnalysisRepository;
     private final SolutionKnowledgeBaseRepository solutionKnowledgeBaseRepository;
     private final IncidentContextBuilder contextBuilder;
@@ -36,7 +36,7 @@ public class IncidentAnalysisService implements AnalyzeIncidentUseCase {
 
         String enrichedContext = contextBuilder.build(content, similarIncidents, validatedSolutions);
 
-        IncidentAnalysis analysis = aiIncidentAnalyzer.analyze(enrichedContext);
+        IncidentAnalysis analysis = aiProviderRouter.analyze(enrichedContext);
         IncidentAnalysis saved = incidentAnalysisRepository.save(content, analysis);
 
         log.info("Incident analysis completed analysisId={} severity={}",

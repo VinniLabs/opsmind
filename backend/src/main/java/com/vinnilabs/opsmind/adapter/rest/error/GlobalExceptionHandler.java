@@ -1,8 +1,10 @@
 package com.vinnilabs.opsmind.adapter.rest.error;
 
 import com.vinnilabs.opsmind.application.exception.AiAnalysisException;
+import com.vinnilabs.opsmind.application.exception.AiProvidersUnavailableException;
 import com.vinnilabs.opsmind.application.exception.AnalysisNotFoundException;
 import com.vinnilabs.opsmind.application.exception.ApplicationException;
+import com.vinnilabs.opsmind.application.exception.IncidentNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -23,9 +25,20 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.NOT_FOUND, exception);
     }
 
+    @ExceptionHandler(IncidentNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleIncidentNotFound(IncidentNotFoundException exception) {
+        return buildResponse(HttpStatus.NOT_FOUND, exception);
+    }
+
     @ExceptionHandler(AiAnalysisException.class)
     public ResponseEntity<ErrorResponse> handleAiAnalysis(AiAnalysisException exception) {
         return buildResponse(HttpStatus.BAD_GATEWAY, exception);
+    }
+
+    @ExceptionHandler(AiProvidersUnavailableException.class)
+    public ResponseEntity<ErrorResponse> handleAiProvidersUnavailable(AiProvidersUnavailableException exception) {
+        log.warn("All AI providers unavailable: {}", exception.getMessage());
+        return buildResponse(HttpStatus.SERVICE_UNAVAILABLE, exception);
     }
 
     @ExceptionHandler(ApplicationException.class)

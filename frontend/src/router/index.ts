@@ -10,6 +10,16 @@ const router = createRouter({
       component: IncidentAnalysisView,
     },
     {
+      path: '/incidents',
+      name: 'incidents',
+      component: () => import('@/views/IncidentsListView.vue'),
+    },
+    {
+      path: '/incidents/:id',
+      name: 'incident-detail',
+      component: () => import('@/views/IncidentDetailView.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: '/',
     },

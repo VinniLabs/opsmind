@@ -14,6 +14,7 @@ public class IncidentAnalysisMapper {
                 .rootCause(analysis.getRootCause())
                 .impact(analysis.getImpact())
                 .recommendation(analysis.getRecommendation())
+                .provider(analysis.getProvider() != null ? analysis.getProvider().name() : null)
                 .build();
     }
 }

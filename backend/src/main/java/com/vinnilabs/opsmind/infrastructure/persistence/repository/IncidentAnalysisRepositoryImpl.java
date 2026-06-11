@@ -77,6 +77,7 @@ public class IncidentAnalysisRepositoryImpl implements IncidentAnalysisRepositor
                 .rootCause(entity.getRootCause())
                 .impact(entity.getImpact())
                 .recommendation(entity.getRecommendation())
+                .provider(entity.getProvider())
                 .build();
     }
 }

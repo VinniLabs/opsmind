@@ -1,5 +1,6 @@
 package com.vinnilabs.opsmind.infrastructure.persistence.entity;
 
+import com.vinnilabs.opsmind.application.ai.AiProviderType;
 import com.vinnilabs.opsmind.application.domain.IncidentSeverity;
 import lombok.Builder;
 import lombok.Value;
@@ -25,6 +26,8 @@ public class IncidentAnalysisEntity {
     String impact;
 
     String recommendation;
+
+    AiProviderType provider;
 
     LocalDateTime createdAt;
 }

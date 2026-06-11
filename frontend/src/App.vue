@@ -31,6 +31,17 @@ const apiTarget = (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/a
         <span class="app-nav__tag">beta</span>
       </div>
 
+      <nav class="app-nav__links">
+        <RouterLink class="app-nav__link" to="/">
+          <i class="pi pi-sparkles" aria-hidden="true"></i>
+          Análise
+        </RouterLink>
+        <RouterLink class="app-nav__link" to="/incidents">
+          <i class="pi pi-list" aria-hidden="true"></i>
+          Incidentes
+        </RouterLink>
+      </nav>
+
       <div class="app-nav__meta">
         <span class="app-nav__endpoint" :title="`API endpoint: ${apiTarget}`">
           <i class="pi pi-server" aria-hidden="true"></i>
@@ -114,6 +125,38 @@ const apiTarget = (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/a
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.app-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 auto;
+}
+
+.app-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--om-text-muted);
+  border: 1px solid transparent;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.app-nav__link:hover {
+  color: var(--om-text);
+  background: var(--om-surface);
+  text-decoration: none;
+}
+
+.app-nav__link.router-link-active {
+  color: var(--om-accent);
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.25);
 }
 
 .app-nav__endpoint {

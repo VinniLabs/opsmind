@@ -9,7 +9,18 @@ spring:
 opsmind:
   ai:
     response-language: ${AI_RESPONSE_LANGUAGE:pt-BR}
+    providers:
+      order: ${AI_PROVIDERS_ORDER:OLLAMA,GROQ,GEMINI}
+    ollama:
+      enabled: ${OLLAMA_ENABLED:true}
+      base-url: ${OLLAMA_BASE_URL:http://ollama:11434}
+      model: ${OLLAMA_MODEL:}
     gemini:
-      api-key: ${GEMINI_API_KEY}
+      api-key: ${GEMINI_API_KEY:}
       model: ${GEMINI_MODEL:gemini-2.5-flash}
       url: ${GEMINI_API_URL:https://generativelanguage.googleapis.com/v1beta/models}
+    groq:
+      enabled: ${GROQ_ENABLED:true}
+      api-key: ${GROQ_API_KEY:}
+      base-url: ${GROQ_API_URL:https://api.groq.com/openai/v1}
+      model: ${GROQ_MODEL:llama-3.3-70b-versatile}
